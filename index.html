@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equilíbrio Verde - Agro Sustentável</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Cabeçalho Principal -->
+    <header class="header-main">
+        <div class="header-container">
+            <h1>Equilíbrio Verde</h1>
+            <p class="subtitle">Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente</p>
+        </div>
+        <div class="accessibility-controls">
+            <button id="btn-contrast" aria-label="Alternar alto contraste" class="btn-acc">Alto Contraste</button>
+            <button id="btn-font-plus" aria-label="Aumentar fonte" class="btn-acc">A+</button>
+            <button id="btn-font-minus" aria-label="Diminuir fonte" class="btn-acc">A-</button>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal do Jogo -->
+    <main class="game-container">
+        <!-- Painel de Status (Dashboard) -->
+        <section class="status-panel" aria-label="Painel de Recursos">
+            <div class="status-card" id="card-capital">
+                <h2>Capital</h2>
+                <p class="status-value" id="val-capital" aria-live="polite">R$ 150,00</p>
+            </div>
+            <div class="status-card">
+                <h2>Sustentabilidade</h2>
+                <div class="progress-bar-container">
+                    <div id="bar-sustainability" class="progress-bar bar-green" style="width: 60%;" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="status-value" id="val-sustainability">60%</p>
+            </div>
+            <div class="status-card">
+                <h2>Produtividade</h2>
+                <div class="progress-bar-container">
+                    <div id="bar-productivity" class="progress-bar bar-blue" style="width: 40%;" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="status-value" id="val-productivity">40%</p>
+            </div>
+        </section>
+
+        <!-- Área de Ações e Simulação -->
+        <div class="game-layout">
+            <!-- Painel de Decisões (Esquerda) -->
+            <section class="actions-panel" aria-labelledby="actions-title">
+                <h3 id="actions-title">Ações de Manejo Agrícola</h3>
+                <p class="instructions">Use o mouse ou as teclas indicadas para tomar decisões rápidas:</p>
+                
+                <div class="actions-grid">
+                    <button class="action-btn" id="btn-harvest" data-key="H">
+                        <span class="key-badge">H</span>
+                        <strong>Colher Safra</strong>
+                        <span class="desc">Gera receita com base na produtividade atual. (Consome solo: -3% Sust.)</span>
+                    </button>
+
+                    <button class="action-btn" id="btn-bio" data-key="B">
+                        <span class="key-badge">B</span>
+                        <strong>Aplicar Bioinsumos</strong>
+                        <span class="desc">Custo: R$ 30 | +15% Sustentabilidade, +5% Produtividade</span>
+                    </button>
+
+                    <button class="action-btn" id="btn-reforest" data-key="R">
+                        <span class="key-badge">R</span>
+                        <strong>Reflorestar Áreas de Preservação</strong>
+                        <span class="desc">Custo: R$ 50 | +35% Sustentabilidade</span>
+                    </button>
+
+                    <button class="action-btn" id="btn-tech" data-key="T">
+                        <span class="key-badge">T</span>
+                        <strong>Irrigação Gota a Gota</strong>
+                        <span class="desc">Custo: R$ 80 | +20% Produtividade, +10% Sustentabilidade</span>
+                    </button>
+
+                    <button class="action-btn" id="btn-chemical" data-key="Q">
+                        <span class="key-badge">Q</span>
+                        <strong>Adubo Químico Intensivo</strong>
+                        <span class="desc">Custo: R$ 20 | +25% Produtividade | -20% Sustentabilidade</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Painel de Log e Eventos (Direita) -->
+            <aside class="log-panel" aria-labelledby="log-title">
+                <h3 id="log-title">Histórico de Eventos</h3>
+                <div id="log-content" class="log-content" aria-live="polite">
+                    <p class="log-entry system-msg">Jogo Iniciado. Mantenha a sustentabilidade alta e atinja R$ 1.000!</p>
+                </div>
+                <div class="game-rules">
+                    <h4>Meta do Jogo</h4>
+                    <ul>
+                        <li>Dinheiro Objetivo: <strong>R$ 1.000,00</strong></li>
+                        <li>Sustentabilidade Mínima: <strong>50%</strong> para vencer.</li>
+                        <li>Se a Sustentabilidade chegar a <strong>0%</strong>, você perde por Colapso Ecológico.</li>
+                        <li>A cada 4 segundos, a sustentabilidade cai naturalmente devido ao desgaste natural do solo.</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Telas Sobrepostas (Modais de Game Over / Vitória) -->
+    <div id="modal-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <h2 id="modal-title">Resultado do Jogo</h2>
+            <p id="modal-message">Mensagem final aqui...</p>
+            <button id="btn-restart" class="btn-restart">Jogar Novamente</button>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="footer-main">
+        <p>&copy; 2026 - Desenvolvido para a iniciativa "Agro forte, futuro sustentável". Trabalho Estudantil.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

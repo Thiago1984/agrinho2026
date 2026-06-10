@@ -1,0 +1,340 @@
+/* Variáveis globais para facilitar manutenção e acessibilidade */
+:root {
+    --bg-color: #f4f7f5;
+    --text-color: #2c3e50;
+    --primary-color: #27ae60;
+    --primary-hover: #219653;
+    --accent-color: #2980b9;
+    --danger-color: #c0392b;
+    --card-bg: #ffffff;
+    --border-color: #dcdde1;
+    --font-step: 0px;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Modo de Alto Contraste (Acessibilidade) */
+.high-contrast {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --primary-color: #ffff00;
+    --primary-hover: #ffcc00;
+    --accent-color: #00ffff;
+    --danger-color: #ff00ff;
+    --card-bg: #121212;
+    --border-color: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: calc(16px + var(--font-step));
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Cabeçalho */
+.header-main {
+    background-color: var(--card-bg);
+    border-bottom: 2px solid var(--border-color);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.accessibility-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-acc {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.btn-acc:hover, .btn-acc:focus {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Área do Jogo */
+.game-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    flex: 1;
+    width: 100%;
+}
+
+/* Grid de Status */
+.status-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.status-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.status-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+/* Barras de Progresso */
+.progress-bar-container {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    height: 20px;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    transition: width 0.4s ease-in-out;
+}
+
+.bar-green {
+    background-color: var(--primary-color);
+}
+
+.bar-blue {
+    background-color: var(--accent-color);
+}
+
+/* Layout Principal do Jogo */
+.game-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+}
+
+/* Painel de Ações */
+.actions-panel {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.instructions {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+.actions-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.action-btn {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1rem;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    transition: border-color 0.2s, transform 0.1s;
+}
+
+.action-btn:hover, .action-btn:focus {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+.action-btn:active {
+    transform: translateY(0);
+}
+
+.key-badge {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background-color: var(--border-color);
+    padding: 2px 6px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.desc {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+/* Painel Lateral / Log */
+.log-panel {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.log-content {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.8rem;
+    height: 180px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 0.85rem;
+}
+
+.log-entry {
+    margin-bottom: 0.5rem;
+    border-left: 3px solid var(--accent-color);
+    padding-left: 5px;
+}
+
+.log-entry.system-msg { border-color: var(--accent-color); }
+.log-entry.positive { border-color: var(--primary-color); }
+.log-entry.negative { border-color: var(--danger-color); }
+
+.game-rules {
+    font-size: 0.85rem;
+}
+
+.game-rules ul {
+    margin-top: 0.5rem;
+    padding-left: 1.2rem;
+}
+
+/* Footer */
+.footer-main {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--card-bg);
+    border-top: 2px solid var(--border-color);
+    margin-top: auto;
+    font-size: 0.85rem;
+}
+
+/* Tela Sobreposta de Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 3px solid var(--primary-color);
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    margin-bottom: 2rem;
+}
+
+.btn-restart {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-restart:hover {
+    background-color: var(--primary-hover);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Responsividade Avançada (CSS Media Queries) */
+@media (max-width: 850px) {
+    .game-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .header-main {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .status-panel {
+        grid-template-columns: 1fr;
+    }
+    
+    .status-value {
+        font-size: 1.5rem;
+    }
+    
+    .action-btn {
+        padding: 0.8rem;
+    }
+    
+    .key-badge {
+        display: none; /* Esconde atalhos de teclado em telas muito pequenas */
+    }
+}

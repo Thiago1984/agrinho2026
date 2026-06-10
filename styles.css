@@ -189,6 +189,7 @@ body {
 }
 
 .key-badge {
+    color: var{--bg-color};
     position: absolute;
     right: 15px;
     top: 15px;
